@@ -1,10 +1,46 @@
 <template>
-  <div>hi</div>
+  <div class="center" style="margin-top:200px">
+    <h1>Search results</h1>
+    <a-spin size="large" v-if="searching" class="center"></a-spin>
+  <div v-for="(item, index) in results" :key="index" >
+    <a-descriptions :title="'Flight ' + index + ' for $' + item.fare">
+      <a-descriptions-item label="Origin">
+        {{ item.origin }}
+      </a-descriptions-item>
+      <a-descriptions-item label="Departure">
+        {{ item.departure }}
+      </a-descriptions-item>
+      <a-descriptions-item label="Destination">
+        {{ item.destination }}
+      </a-descriptions-item>
+      <a-descriptions-item label="Arrival">
+        {{ item.arrival }}
+      </a-descriptions-item>
+      <a-descriptions-item label="Cabin Type">
+        {{ item.cabinType }}
+      </a-descriptions-item>
+    </a-descriptions>
+  </div>
+  </div>
 </template>
 
 <script>
+
 export default {
   name: "FlightResult",
   components: {},
+  created() {
+    setTimeout(() => {
+      const data = require("../data/flightResults.json");
+      this.results = data;
+      this.searching = false;
+    }, 500)
+  },
+  data() {
+    return {
+      results: null,
+      searching: true
+    };
+  },
 };
 </script>
