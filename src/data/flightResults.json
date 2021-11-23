@@ -1,0 +1,26 @@
+[
+    {
+        "origin": "LAX",
+        "destination": "JFK",
+        "departure": "02-22-2022T07:35:00",
+        "arrival": "02-22-2022T12:50:00",
+        "cabinType": "economy",
+        "fare": "995.00"
+    },
+    {
+        "origin": "LAX",
+        "destination": "JFK",
+        "departure": "02-22-2022T07:50:00",
+        "arrival": "02-22-2022T13:20:00",
+        "cabinType": "economy",
+        "fare": "990.00"
+    },
+    {
+        "origin": "LAX",
+        "destination": "JFK",
+        "departure": "02-22-2022T07:25:00",
+        "arrival": "02-22-2022T12:30:00",
+        "cabinType": "economy",
+        "fare": "1025.00"
+    }
+]

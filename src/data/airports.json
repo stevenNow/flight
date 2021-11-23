@@ -1,0 +1,8 @@
+[
+    {"code": "DFW", "display": "Dallas/Ft Worth Intl Apt"},
+    {"code": "LAX", "display": "Los Angeles International Apt"},
+    {"code": "JFK", "display": "J F Kennedy International Apt"},
+    {"code": "SLC", "display": "Salt Lake City International"},
+    {"code": "SEA", "display": "Seattle-Tacoma International Apt"},
+    {"code": "DEN", "display": "Denver Intl Apt"}
+]

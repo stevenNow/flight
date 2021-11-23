@@ -1,0 +1,6 @@
+[
+    {"code": "economy", "display": "Economy"},
+    {"code": "premium", "display": "Premium Economy"},
+    {"code": "business", "display": "Business"},
+    {"code": "first", "display": "First"}
+]

@@ -1,0 +1,8 @@
+{
+    "requestId": "1234",
+    "origin": "LAX",
+    "departure": "2022-02-22",
+    "desitination": "JFK",
+    "return": "2022-02-23",
+    "cabinType": "economy"
+}
