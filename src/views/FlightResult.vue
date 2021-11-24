@@ -6,7 +6,7 @@
     </a-row>
     <a-spin size="large" v-if="searching" class="spinner"></a-spin>
   <div v-for="(item, index) in results" :key="index" >
-    <a-descriptions :title="'Flight ' + index + ' for $' + item.fare">
+    <a-descriptions :title="'Flight ' + index + ' for $' + item.fare" class="searchListItem">
       <a-descriptions-item label="Origin">
         {{ item.origin }}
       </a-descriptions-item>
@@ -56,5 +56,12 @@ export default {
 .spinner {
   margin-left: 50%;
   margin-top: 100px;
+}
+.searchListItem {
+  padding: 25px;
+}
+.searchListItem:hover {
+  cursor: pointer;
+  box-shadow: 0 0rem 0.5rem rgba(0, 0, 0, 0.15);
 }
 </style>
