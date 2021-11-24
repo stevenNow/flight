@@ -3,15 +3,9 @@
     <a-row style="margin-top: 200px">
       <a-form-model :model="searchForm">
         <a-form-model-item label="Origin">
-          <a-select v-model="searchForm.origin">
-            <a-select-option value="LAX">
-              Los Angeles
-            </a-select-option>
-            <a-select-option value="ORD">
-              O'hare
-            </a-select-option>
-            <a-select-option value="JFK">
-              John F Kennedy
+          <a-select v-model="searchForm.origin" allowClear>
+            <a-select-option v-for="item in filteredOrigins" :key="item.key">
+              {{item.label}}
             </a-select-option>
           </a-select>
         </a-form-model-item>
@@ -19,15 +13,9 @@
           <a-date-picker v-model="searchForm.departure" :disabled-date="disabledDate" />
         </a-form-model-item>
         <a-form-model-item label="Destination">
-          <a-select  v-model="searchForm.destination">
-            <a-select-option value="LAX">
-              Los Angeles
-            </a-select-option>
-            <a-select-option value="ORD">
-              O'hare
-            </a-select-option>
-            <a-select-option value="JFK">
-              John F Kennedy
+          <a-select  v-model="searchForm.destination" allowClear>
+            <a-select-option v-for="item in filteredDestinations" :key="item.key">
+              {{item.label}}
             </a-select-option>
           </a-select>
         </a-form-model-item>
@@ -75,6 +63,24 @@ export default {
           && this.searchForm.destination && this.searchForm.return && this.searchForm.cabinType
       )
     },
+    filteredDestinations() {
+      return this.airportOptions.filter((item) => {
+          if(item.key === this.searchForm.origin){
+            return false;
+          }
+          return true;
+          }
+      )
+    },
+    filteredOrigins() {
+      return this.airportOptions.filter((item) => {
+            if(item.key === this.searchForm.destination){
+              return false;
+            }
+            return true;
+          }
+      )
+    }
   },
   data() {
     return {
@@ -86,6 +92,11 @@ export default {
         return: null,
         cabinType: null
       },
+      airportOptions: [
+        {key: "JFK", label: "John F Kennedy"},
+        {key: "ORD", label: "O'hare"},
+        {key: "LAX", label: "Los Angeles"}
+      ]
     };
   },
   created() {
