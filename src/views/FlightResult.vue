@@ -1,7 +1,10 @@
 <template>
   <div class="center" style="margin-top:200px">
-    <h1>Search results</h1>
-    <a-spin size="large" v-if="searching" class="center"></a-spin>
+    <a-row>
+      <a-col span="12"><h1>Search results</h1></a-col>
+      <a-col offset="8" span="4"><a-button @click="backToSearch">Back</a-button></a-col>
+    </a-row>
+    <a-spin size="large" v-if="searching" class="spinner"></a-spin>
   <div v-for="(item, index) in results" :key="index" >
     <a-descriptions :title="'Flight ' + index + ' for $' + item.fare">
       <a-descriptions-item label="Origin">
@@ -42,5 +45,16 @@ export default {
       searching: true
     };
   },
+  methods: {
+    backToSearch() {
+      this.$router.push({path: "/"})
+    }
+  }
 };
 </script>
+<style>
+.spinner {
+  margin-left: 50%;
+  margin-top: 100px;
+}
+</style>
