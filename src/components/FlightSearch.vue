@@ -10,7 +10,7 @@
           </a-select>
         </a-form-model-item>
         <a-form-model-item label="Departure">
-          <a-date-picker v-model="searchForm.departure" :disabled-date="disabledDate" />
+          <a-date-picker v-model="searchForm.departure" :disabled-date="disabledDate" style="width:100%" />
         </a-form-model-item>
         <a-form-model-item label="Destination">
           <a-select  v-model="searchForm.destination" allowClear>
@@ -20,7 +20,7 @@
           </a-select>
         </a-form-model-item>
         <a-form-model-item label="Return">
-          <a-date-picker v-model="searchForm.return" :disabled-date="disabledDate" />
+          <a-date-picker v-model="searchForm.return" :disabled-date="disabledDate" style="width:100%" />
         </a-form-model-item>
         <a-form-model-item label="Cabin Type">
           <a-select v-model="searchForm.cabinType">
