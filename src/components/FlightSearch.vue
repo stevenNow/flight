@@ -36,7 +36,7 @@
           </a-select>
         </a-form-model-item>
         <a-form-model-item  :wrapper-col="{ span: 24 }">
-          <a-button type="primary" @click="onSearch" :disabled="disabledForm">
+          <a-button type="primary" @click="onSearch" :disabled="disabledSubmit">
             Search
           </a-button>
           <a-button  @click="resetForm" style="margin-left:10px;">
@@ -57,7 +57,7 @@ export default {
   components: {
   },
   computed: {
-    disabledForm() {
+    disabledSubmit() {
       return !(
           this.searchForm && this.searchForm.origin && this.searchForm.departure
           && this.searchForm.destination && this.searchForm.return && this.searchForm.cabinType
