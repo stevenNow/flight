@@ -23,7 +23,7 @@
           <a-date-picker v-model="searchForm.return" :disabled-date="disabledDate" style="width:100%" />
         </a-form-model-item>
         <a-form-model-item label="Cabin Type">
-          <a-select v-model="searchForm.cabinType">
+          <a-select v-model="searchForm.cabinType" allowClear>
             <a-select-option value="economy">
               Economy
             </a-select-option>
@@ -59,13 +59,14 @@ export default {
   computed: {
     disabledForm() {
       return !(
-          this.searchForm.origin && this.searchForm.departure
+          this.searchForm && this.searchForm.origin && this.searchForm.departure
           && this.searchForm.destination && this.searchForm.return && this.searchForm.cabinType
       )
     },
     filteredDestinations() {
       return this.airportOptions.filter((item) => {
-          if(item.key === this.searchForm.origin){
+        let origin = this.searchForm && this.searchForm.origin;
+          if(item.key === origin){
             return false;
           }
           return true;
@@ -74,7 +75,8 @@ export default {
     },
     filteredOrigins() {
       return this.airportOptions.filter((item) => {
-            if(item.key === this.searchForm.destination){
+        let destination = this.searchForm && this.searchForm.destination;
+            if(item.key === destination){
               return false;
             }
             return true;
@@ -100,11 +102,13 @@ export default {
     };
   },
   created() {
-    this.searchForm.origin = this.getOrigin();
-    this.searchForm.departure = this.getDeparture();
-    this.searchForm.destination = this.getDestination();
-    this.searchForm.return = this.getReturn();
-    this.searchForm.cabinType = this.getCabinType();
+    if(this.searchForm){
+      this.searchForm.origin = this.getOrigin();
+      this.searchForm.departure = this.getDeparture();
+      this.searchForm.destination = this.getDestination();
+      this.searchForm.return = this.getReturn();
+      this.searchForm.cabinType = this.getCabinType();
+    }
   },
   methods: {
     moment,
@@ -114,31 +118,38 @@ export default {
     ...mapGetters([
       "getRequestId", "getOrigin", "getDeparture", "getDestination", "getReturn", "getCabinType"
     ]),
-    onSearch(val) {
-        this.searchTerm = val;
+    onSearch() {
         //requirements ask to emit this event, but i don't use it. using vuex instead.
         this.$emit("flight-search-request", this.searchForm);
         this.setSearchValuesInStore();
         this.$router.push({path: "/flightResult"});
     },
     setSearchValuesInStore() {
-      this.setRequestId(this.searchForm.requestId);
-      this.setOrigin(this.searchForm.origin);
-      this.setDeparture(this.searchForm.departure);
-      this.setDestination(this.searchForm.destination);
-      this.setReturn(this.searchForm.return);
-      this.setCabinType(this.searchForm.cabinType);
+      let requestId = this.searchForm && this.searchForm.requestId;
+      let origin = this.searchForm && this.searchForm.origin;
+      let departure = this.searchForm && this.searchForm.departure;
+      let destination = this.searchForm && this.searchForm.destination;
+      let returnDate = this.searchForm && this.searchForm.return;
+      let cabinType = this.searchForm && this.searchForm.cabinType;
+      this.setRequestId(requestId);
+      this.setOrigin(origin);
+      this.setDeparture(departure);
+      this.setDestination(destination);
+      this.setReturn(returnDate);
+      this.setCabinType(cabinType);
     },
     disabledDate(current) {
-      // Can not select days before today and today
+      // Can not select days before today
       return current && current < moment().startOf('day') -1;
     },
     resetForm() {
-      this.searchForm.origin = null;
-      this.searchForm.departure = null;
-      this.searchForm.destination = null;
-      this.searchForm.return = null;
-      this.searchForm.cabinType = null;
+      if(this.searchForm) {
+        this.searchForm.origin = null;
+        this.searchForm.departure = null;
+        this.searchForm.destination = null;
+        this.searchForm.return = null;
+        this.searchForm.cabinType = null;
+      }
     }
   },
 };
