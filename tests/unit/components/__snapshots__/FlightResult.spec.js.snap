@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FlightResult Test Tests FlightResult 1`] = `
+<div
+  class="center"
+  style="margin-top: 200px;"
+>
+  <div
+    class="ant-row"
+  >
+    <div
+      class="ant-col ant-col-12"
+    >
+      <h1>
+        Search results
+      </h1>
+    </div>
+     
+    <div
+      class="ant-col ant-col-4 ant-col-offset-8"
+    >
+      <button
+        class="ant-btn"
+        type="button"
+      >
+        <span>
+          Back
+        </span>
+      </button>
+    </div>
+  </div>
+   
+  <div
+    class="spinner ant-spin ant-spin-lg ant-spin-spinning"
+  >
+    <span
+      class="ant-spin-dot ant-spin-dot-spin"
+    >
+      <i
+        class="ant-spin-dot-item"
+      />
+      <i
+        class="ant-spin-dot-item"
+      />
+      <i
+        class="ant-spin-dot-item"
+      />
+      <i
+        class="ant-spin-dot-item"
+      />
+    </span>
+  </div>
+   
+</div>
+`;
