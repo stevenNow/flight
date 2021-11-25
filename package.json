@@ -5,9 +5,10 @@
   "scripts": {
     "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build",
-    "test": "yarn test:unit",
+    "test": "jest --coverage",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "fmt": "prettier --write src tests"
   },
   "dependencies": {
     "ant-design-vue": "^1.7.8",

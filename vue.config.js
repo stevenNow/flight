@@ -2,9 +2,9 @@ module.exports = {
   css: {
     loaderOptions: {
       less: {
-        'javascriptEnabled': true
-      }
-    }
+        javascriptEnabled: true,
+      },
+    },
   },
   publicPath: "/",
   devServer: {
