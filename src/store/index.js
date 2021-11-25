@@ -38,7 +38,7 @@ export default new Vuex.Store({
     },
     setCabinType(state, cabinType) {
       state.cabinType = cabinType;
-    }
+    },
   },
   actions: {},
   modules: {},

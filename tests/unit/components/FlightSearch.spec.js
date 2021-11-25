@@ -18,7 +18,7 @@ describe("FlightSearch Test", () => {
       getDeparture: jest.fn(),
       getDestination: jest.fn(),
       getReturn: jest.fn(),
-      getCabinType: jest.fn()
+      getCabinType: jest.fn(),
     };
 
     mutations = {};
@@ -49,15 +49,21 @@ describe("FlightSearch Test", () => {
     wrapper.vm.searchForm.origin = "LAX";
     expect(FlightSearch.computed.disabledSubmit.call(wrapper.vm)).toBeTruthy();
     //test filteredDestinations
-    expect(FlightSearch.computed.filteredDestinations.call(wrapper.vm))
-        .toStrictEqual([{key: "JFK", label: "John F Kennedy"},
-      {key: "ORD", label: "O'hare"}]);
+    expect(
+      FlightSearch.computed.filteredDestinations.call(wrapper.vm)
+    ).toStrictEqual([
+      { key: "JFK", label: "John F Kennedy" },
+      { key: "ORD", label: "O'hare" },
+    ]);
     wrapper.vm.searchForm.departure = "1/1/2022";
     wrapper.vm.searchForm.destination = "ORD";
     //test filteredOrigins
-    expect(FlightSearch.computed.filteredOrigins.call(wrapper.vm))
-        .toStrictEqual([{key: "JFK", label: "John F Kennedy"},{key: "LAX", label: "Los Angeles"}
-          ]);
+    expect(
+      FlightSearch.computed.filteredOrigins.call(wrapper.vm)
+    ).toStrictEqual([
+      { key: "JFK", label: "John F Kennedy" },
+      { key: "LAX", label: "Los Angeles" },
+    ]);
     wrapper.vm.searchForm.return = "1/2/2022";
     wrapper.vm.searchForm.cabinType = "fancy";
     expect(FlightSearch.computed.disabledSubmit.call(wrapper.vm)).toBeFalsy();
