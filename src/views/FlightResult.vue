@@ -3,7 +3,9 @@
     <a-row>
       <a-col span="12"><h1>Search results</h1></a-col>
       <a-col offset="8" span="4"
-        ><a-button @click="backToSearch">Back</a-button></a-col
+        ><a-button @click="backToSearch" icon="arrow-left"
+          >Back</a-button
+        ></a-col
       >
     </a-row>
     <a-spin size="large" v-if="searching" class="spinner"></a-spin>
